@@ -70,10 +70,18 @@ header {
   align-items: center;
 }
 
+@media only screen and (max-height: 650px) {
+    .square {
+        background-color: lightblue;
+        min-width: 45px;
+        min-height: 45px;
+    }
+}
+
 #keyboard-container {
   height: 200px;
 }
-
+ 
 .keyboard-row {
   display: flex;
   justify-content: center;
