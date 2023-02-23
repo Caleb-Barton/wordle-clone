@@ -71,22 +71,53 @@ header {
   align-items: center;
 }
 
+@media only screen and (max-height: 675px) {
+    .square {
+        min-width: 56px;
+        min-height: 56px;
+        font-size: 46px;
+    }
+}
+
 @media only screen and (max-height: 650px) {
     .square {
-        min-width: 47px;
-        min-height: 47px;
-        font-size: 39px;
+        min-width: 53px;
+        min-height: 53px;
+        font-size: 43px;
+    }
+}
+
+@media only screen and (max-height: 625px) {
+    .square {
+        min-width: 49px;
+        min-height: 49px;
+        font-size: 40px;
+    }
+}
+
+@media only screen and (max-height: 600px) {
+    .square {
+        min-width: 45px;
+        min-height: 45px;
+        font-size: 36px;
     }
 }
 
 @media only screen and (max-height: 575px) {
     .square {
-        min-width: 40px;
-        min-height: 40px;
-        font-size: 32px;
+        min-width: 42px;
+        min-height: 42px;
+        font-size: 33px;
     }
 }
 
+@media only screen and (max-height: 550px) {
+    .square {
+        min-width: 38px;
+        min-height: 38px;
+        font-size: 30px;
+    }
+}
 
 
 #keyboard-container {
