@@ -59,8 +59,8 @@ header {
 
 .square {
     border: 2px solid rgb(58, 58, 60);
-    min-width: 8vh;
-    min-height: 8vh;
+    min-width: 7.75vh;
+    min-height: 7.75vh;
     font-size: 50px;
     font-weight: bold;
     color: gainsboro;
@@ -87,7 +87,7 @@ header {
   font-size:2.5vh;
   border: 0;
   padding: 0;
-  height: 8vh;
+  height: 7.5vh;
   cursor: pointer;
   background-color: rgb(90, 90, 90);
   color: rgb(215, 218, 220);
