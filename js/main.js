@@ -79,20 +79,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getTileColor(letter, index) {
-    const isCorrectLetter = word.includes(letter);
+    let distance = letter.charCodeAt(0) - word.charCodeAt(index)
+    console.log(distance)
 
-    if (!isCorrectLetter) {
+    if (distance > 0) {
       return "#336290";
-    }
-
-    const letterInThatPosition = word.charAt(index);
-    const isCorrectPosition = letter === letterInThatPosition;
-
-    if (isCorrectPosition) {
+    } else if (distance == 0) {
       return "#487E41";
+    } else {
+      return "#C39A2C";
     }
-
-    return "#C39A2C";
+    
   }
 
   function handleSubmitWord() {
@@ -103,10 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const currentWord = currentWordArr.join("");
-    console.log(binarySearch(allWords, currentWord));
     
-    console.log(word);
-    console.log(allWords);
     if (binarySearch(allWords, currentWord)) {
       const firstLetterId = guessedWordCount * 5 + 1;
       const interval = 150;
