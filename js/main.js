@@ -1,36 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
-  createSquares();
-  getNewWord();
+    createSquares();
+    getNewWord();
 
-  let guessedWords = [[]];
-  let availableSpace = 1;
+    let guessedWords = [[]];
+    let availableSpace = 1;
 
-  let word = "thing";
-  let guessedWordCount = 0;
+    let word = "thing";
+    let guessedWordCount = 0;
 
-  const keys = document.querySelectorAll(".keyboard-row button");
+    const keys = document.querySelectorAll(".keyboard-row button");
 
-  function getNewWord() {/*
-    fetch(
-      `https://wordsapiv1.p.rapidapi.com/words/?random=true&lettersMin=5&lettersMax=5`,
-      {
-        method: "GET",
-        headers: {
-          "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
-          "x-rapidapi-key": "61c5e3986dmsh20c1bee95c2230dp18d1efjsn4668bbcfc1b3",
-        },
-      }
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((res) => {
-          word = res.word;
-      })
-      .catch((err) => {
-        console.error(err);
-      });*/
-  }
+    function getNewWord() {
+        fetch("data/good_words.txt")
+            .then((response) => {
+                return response.json();
+            })
+                .then((res) => {
+                    word = res.word;
+                })
+            .catch((err) => {
+                console.error(err);
+            }
+        );
+    }
 
   function getCurrentWordArr() {
     const numberOfGuessedWords = guessedWords.length;

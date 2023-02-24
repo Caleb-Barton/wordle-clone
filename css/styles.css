@@ -55,7 +55,7 @@ header {
     justify-content: center;
     align-items: center;
     flex-grow: 1;
-    overflow: auto;
+    overflow: hidden;
 }
 
 #board {
@@ -68,8 +68,6 @@ header {
 
 .square {
     border: 2px solid rgb(58, 58, 60);
-    min-width: 30px;
-    min-height: 30px;
     width: 7.5vh;
     height: 7.5vh;
     font-size: 4.75vh;
