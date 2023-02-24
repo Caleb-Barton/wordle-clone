@@ -12,14 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function getNewWord() {
         fetch("data/good_words.txt")
-            .then((response) => {
-                return response.json();
+            .then(response => response.text())
+            .then(text => {
+                const listItems = text.split('\n').map(item => `<li>${item}</li>`).join('');
+                const list = document.createElement('ul');
+                list.innerHTML = listItems;
+                document.body.appendChild(list);
             })
-                .then((res) => {
-                    word = res.word;
-                })
             .catch((err) => {
                 console.error(err);
+                word = "error"
             }
         );
     }
