@@ -51,11 +51,11 @@ header {
 }
 
 #board-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    overflow: auto;
 }
 
 #board {
@@ -68,9 +68,11 @@ header {
 
 .square {
     border: 2px solid rgb(58, 58, 60);
-    min-width: 7.75vh;
-    min-height: 7.75vh;
-    font-size: 5vh;
+    min-width: 30px;
+    min-height: 30px;
+    width: 7.5vh;
+    height: 7.5vh;
+    font-size: 4.75vh;
     font-weight: bold;
     color: gainsboro;
     text-transform: uppercase;
@@ -78,8 +80,6 @@ header {
     justify-content: center;
     align-items: center;
 }
-
-
 
 .keyboard-row {
   display: flex;
