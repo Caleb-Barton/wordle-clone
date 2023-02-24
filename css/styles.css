@@ -71,12 +71,14 @@ header {
     width: 7.5vh;
     height: 7.5vh;
     font-size: 4.75vh;
+    text-shadow: .2vh .35vh .2vh #000000;
     font-weight: bold;
     color: gainsboro;
     text-transform: uppercase;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: .25thisvh;
 }
 
 .keyboard-row {
@@ -103,8 +105,7 @@ header {
   margin-left: 2px;
   border-radius: 4px;
   user-select: none;
-  box-shadow: inset 0px -3px 0px #a33;
-  
+  box-shadow: inset 0px -5px 0px #a33;
 }
 
 .spacer-half {

@@ -82,17 +82,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const isCorrectLetter = word.includes(letter);
 
     if (!isCorrectLetter) {
-      return "rgb(58, 58, 60)";
+      return "#336290";
     }
 
     const letterInThatPosition = word.charAt(index);
     const isCorrectPosition = letter === letterInThatPosition;
 
     if (isCorrectPosition) {
-      return "rgb(83, 141, 78)";
+      return "#487E41";
     }
 
-    return "rgb(181, 159, 59)";
+    return "#C39A2C";
   }
 
   function handleSubmitWord() {
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(allWords);
     if (binarySearch(allWords, currentWord)) {
       const firstLetterId = guessedWordCount * 5 + 1;
-      const interval = 200;
+      const interval = 150;
       currentWordArr.forEach((letter, index) => {
         setTimeout(() => {
           const tileColor = getTileColor(letter, index);
@@ -188,6 +188,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
   }
+
+  function isSingleLetter(str) {
+    return /^[a-z]$/.test(str);
+  }
+
+  function typeToBoard(letter) {
+    if (!gameOver) {
+
+      if (letter === "enter") {
+        handleSubmitWord();
+        return;
+      }
+
+      if (letter === "del") {
+        handleDeleteLetter();
+        return;
+      }
+
+      updateGuessedWords(letter);
+    }
+  }
+
+  document.addEventListener('keydown', event => {
+    const key = event.key.toLowerCase();
+    if (isSingleLetter(key) || key === "enter"){
+      typeToBoard(key)
+    } else if (key === "backspace") {
+      typeToBoard("del")
+    }
+  });
 
   for (let i = 0; i < keys.length; i++) {
     keys[i].onclick = ({ target }) => {
