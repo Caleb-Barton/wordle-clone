@@ -52,7 +52,7 @@ header {
 #board {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-gap: 5px;
+  grid-gap: .75vh;
   padding: 10px;
   box-sizing: border-box;
 }
@@ -61,11 +61,10 @@ header {
     border: 2px solid rgb(58, 58, 60);
     min-width: 7.75vh;
     min-height: 7.75vh;
-    font-size: 50px;
+    font-size: 5vh;
     font-weight: bold;
     color: gainsboro;
     text-transform: uppercase;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,7 +83,7 @@ header {
 .keyboard-row button {
   font-family: inherit;
   font-weight: bold;
-  font-size:2.5vh;
+  font-size:2.25vh;
   border: 0;
   padding: 0;
   height: 7.5vh;
