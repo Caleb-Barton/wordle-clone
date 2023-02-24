@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let gameOver = false;
 
     const keys = document.querySelectorAll(".keyboard-row button");
+    let keyRange = [[96,123],[96,123],[96,123],[96,123],[96,123]]
 
     function getAllWords() {
       fetch("data/all_words.txt")
@@ -80,16 +81,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function getTileColor(letter, index) {
     let distance = letter.charCodeAt(0) - word.charCodeAt(index)
-    console.log(distance)
 
     if (distance > 0) {
-      return "#336290";
+      updateKeyRangeLow(letter, index);
+      return "#2E5984";
     } else if (distance == 0) {
-      return "#487E41";
+      updateKeyRangeFound(letter, index);
+      return "#40713A";
     } else {
-      return "#C39A2C";
+      updateKeyRangeHigh(letter, index);
+      return "#B7912A";
     }
     
+  }
+
+  function updateKeyboardColors() {
+    const charNum = getCurrentWordArr().length;
+    if (charNum >= 5) {return}
+    keys.forEach(key => {
+      dataKey = key.getAttribute("data-key");
+      if (dataKey.length == 1) // Let's not do anything to Del or Enter
+      {
+        if (keyRange[charNum][0] >= dataKey.charCodeAt(0)) {
+          key.style.backgroundColor = "#B7912A";
+        } else  if (keyRange[charNum][1] <= dataKey.charCodeAt(0)) {
+          key.style.backgroundColor = "#2E5984";
+        } else {
+          key.style.backgroundColor = '#666';
+        }
+      }
+    });
+  }
+
+  function updateKeyRangeFound(letter, index){
+    keyRange[index][0] = letter.charCodeAt(0) - 1;
+    keyRange[index][1] = letter.charCodeAt(0) + 1;
+  }
+
+  function updateKeyRangeHigh(letter, index){
+    let knownMin = keyRange[index][0];
+    if (letter.charCodeAt(0) > knownMin) {keyRange[index][0] = letter.charCodeAt(0);}
+  }
+
+  function updateKeyRangeLow(letter, index){
+    let knownMax = keyRange[index][1];
+    if (letter.charCodeAt(0) < knownMax) {keyRange[index][1] = letter.charCodeAt(0);}
   }
 
   function handleSubmitWord() {
@@ -118,13 +154,11 @@ document.addEventListener("DOMContentLoaded", () => {
       guessedWordCount += 1;
 
       if (currentWord === word) {
-        window.alert("Congratulations!");
+        setTimeout(displayCongrats, 1350);
         gameWon = true;
         gameOver = true;
-      }
-
-      if (guessedWords.length === 6) {
-        window.alert(`Sorry, you have no more guesses! The word is ${word}.`);
+      } else if (guessedWords.length === 6) {
+        setTimeout(displaySorry, 1350);
         gameOver = true;
       }
 
@@ -133,6 +167,14 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       window.alert("Word is not recognised!");
     }
+  }
+
+  function displayCongrats() {
+    window.alert("Congratulations!")
+  }
+
+  function displaySorry() {
+    window.alert(`Sorry, the word was ${word}!`)
   }
 
   function binarySearch(arr, target) { // Gifted to me by ChatGPT
@@ -192,15 +234,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (letter === "enter") {
         handleSubmitWord();
-        return;
-      }
-
-      if (letter === "del") {
+      } else if (letter === "del") {
         handleDeleteLetter();
-        return;
+      } else {
+        updateGuessedWords(letter);
       }
-
-      updateGuessedWords(letter);
+      updateKeyboardColors();
     }
   }
 
@@ -218,17 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!gameOver) {
         const letter = target.getAttribute("data-key");
 
-        if (letter === "enter") {
-          handleSubmitWord();
-          return;
-        }
-  
-        if (letter === "del") {
-          handleDeleteLetter();
-          return;
-        }
-  
-        updateGuessedWords(letter);
+        typeToBoard(letter);
       }
     };
   }
