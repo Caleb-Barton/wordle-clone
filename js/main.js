@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       fetch("data/all_words.txt")
             .then(response => response.text())
             .then(text => {
-              allWords = text.split('\r\n')
+              allWords = text.split(',')
             })
             .catch((err) => {
                 console.error(err);
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch("data/good_words.txt")
             .then(response => response.text())
             .then(text => {
-              const good_words = text.split('\r\n');
+              const good_words = text.split(',');
               let index = getNumberFromDate(good_words.length)
               word = good_words[index];
             })
