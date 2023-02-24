@@ -5,19 +5,19 @@ document.addEventListener("DOMContentLoaded", () => {
   let guessedWords = [[]];
   let availableSpace = 1;
 
-  let word;
+  let word = "thing";
   let guessedWordCount = 0;
 
   const keys = document.querySelectorAll(".keyboard-row button");
 
-  function getNewWord() {
+  function getNewWord() {/*
     fetch(
       `https://wordsapiv1.p.rapidapi.com/words/?random=true&lettersMin=5&lettersMax=5`,
       {
         method: "GET",
         headers: {
           "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
-          "x-rapidapi-key": "<YOUR_KEY_GOES_HERE>",
+          "x-rapidapi-key": "61c5e3986dmsh20c1bee95c2230dp18d1efjsn4668bbcfc1b3",
         },
       }
     )
@@ -25,11 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
         return response.json();
       })
       .then((res) => {
-        word = res.word;
+          word = res.word;
       })
       .catch((err) => {
         console.error(err);
-      });
+      });*/
   }
 
   function getCurrentWordArr() {
