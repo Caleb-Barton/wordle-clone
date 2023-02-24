@@ -103,8 +103,11 @@ header {
   margin-left: 2px;
   border-radius: 4px;
   user-select: none;
+  box-shadow: inset 0px -3px 0px #a33;
+  
 }
 
 .spacer-half {
   flex-grow: 0.5;
+  background-color: transparent;
 }
