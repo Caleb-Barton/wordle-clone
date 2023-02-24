@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let word;
     let guessedWordCount = 0;
+    let gameWon = false;
+    let gameOver = false;
 
     const keys = document.querySelectorAll(".keyboard-row button");
 
@@ -97,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentWordArr = getCurrentWordArr();
     if (currentWordArr.length !== 5) {
       window.alert("Word must be 5 letters");
+      return;
     }
 
     const currentWord = currentWordArr.join("");
@@ -120,10 +123,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (currentWord === word) {
         window.alert("Congratulations!");
+        gameWon = true;
+        gameOver = true;
       }
 
       if (guessedWords.length === 6) {
         window.alert(`Sorry, you have no more guesses! The word is ${word}.`);
+        gameOver = true;
       }
 
       guessedWords.push([]);
@@ -168,31 +174,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function handleDeleteLetter() {
     const currentWordArr = getCurrentWordArr();
-    const removedLetter = currentWordArr.pop();
+    if (currentWordArr.length > 0) {
+      const removedLetter = currentWordArr.pop();
 
-    guessedWords[guessedWords.length - 1] = currentWordArr;
+      guessedWords[guessedWords.length - 1] = currentWordArr;
+  
+      const lastLetterEl = document.getElementById(String(availableSpace - 1));
+  
+      lastLetterEl.textContent = "";
+      availableSpace = availableSpace - 1;
+    }
 
-    const lastLetterEl = document.getElementById(String(availableSpace - 1));
-
-    lastLetterEl.textContent = "";
-    availableSpace = availableSpace - 1;
   }
 
   for (let i = 0; i < keys.length; i++) {
     keys[i].onclick = ({ target }) => {
-      const letter = target.getAttribute("data-key");
+      if (!gameOver) {
+        const letter = target.getAttribute("data-key");
 
-      if (letter === "enter") {
-        handleSubmitWord();
-        return;
+        if (letter === "enter") {
+          handleSubmitWord();
+          return;
+        }
+  
+        if (letter === "del") {
+          handleDeleteLetter();
+          return;
+        }
+  
+        updateGuessedWords(letter);
       }
-
-      if (letter === "del") {
-        handleDeleteLetter();
-        return;
-      }
-
-      updateGuessedWords(letter);
     };
   }
 });
