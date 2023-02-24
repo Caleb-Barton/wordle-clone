@@ -105,6 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentWord = currentWordArr.join("");
     console.log(binarySearch(allWords, currentWord));
     
+    console.log(word);
+    console.log(allWords);
     if (binarySearch(allWords, currentWord)) {
       const firstLetterId = guessedWordCount * 5 + 1;
       const interval = 200;
