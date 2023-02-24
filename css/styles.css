@@ -21,7 +21,7 @@ body {
 
 #game {
   width: 100%;
-  max-width: 500px;
+  max-width: 700px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -59,8 +59,8 @@ header {
 
 .square {
     border: 2px solid rgb(58, 58, 60);
-    min-width: 60px;
-    min-height: 60px;
+    min-width: 8vh;
+    min-height: 8vh;
     font-size: 50px;
     font-weight: bold;
     color: gainsboro;
@@ -71,84 +71,33 @@ header {
     align-items: center;
 }
 
-@media only screen and (max-height: 675px) {
-    .square {
-        min-width: 56px;
-        min-height: 56px;
-        font-size: 46px;
-    }
-}
-
-@media only screen and (max-height: 650px) {
-    .square {
-        min-width: 53px;
-        min-height: 53px;
-        font-size: 43px;
-    }
-}
-
-@media only screen and (max-height: 625px) {
-    .square {
-        min-width: 49px;
-        min-height: 49px;
-        font-size: 40px;
-    }
-}
-
-@media only screen and (max-height: 600px) {
-    .square {
-        min-width: 45px;
-        min-height: 45px;
-        font-size: 36px;
-    }
-}
-
-@media only screen and (max-height: 575px) {
-    .square {
-        min-width: 42px;
-        min-height: 42px;
-        font-size: 33px;
-    }
-}
-
-@media only screen and (max-height: 550px) {
-    .square {
-        min-width: 38px;
-        min-height: 38px;
-        font-size: 30px;
-    }
-}
 
 
-#keyboard-container {
-  height: 200px;
-}
- 
 .keyboard-row {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin: 0 auto 8px;
+  margin: 0 auto 5px;
   touch-action: manipulation;
 }
 
 .keyboard-row button {
   font-family: inherit;
   font-weight: bold;
+  font-size:2.5vh;
   border: 0;
   padding: 0;
-  height: 58px;
+  height: 8vh;
   cursor: pointer;
-  background-color: rgb(129, 131, 132);
+  background-color: rgb(90, 90, 90);
   color: rgb(215, 218, 220);
   flex-grow: 1;
   text-transform: uppercase;
-  margin-right: 6px;
+  margin-right: 2px;
+  margin-left: 2px;
   border-radius: 4px;
   user-select: none;
 }
-
-
 
 .spacer-half {
   flex-grow: 0.5;
