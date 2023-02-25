@@ -1,3 +1,10 @@
+:root {
+  --cb_yellow: #B7912A;
+  --cb_green: #40713A;
+  --cb_blue: #2E5984;
+  --cb_gray: #555;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -41,7 +48,7 @@ header {
 }
 
 .title {
-  color: gainsboro;
+  color: #FFF;
   font-size: 2.5rem;
   font-weight: bold;
   margin: 0.4rem 0 0.4rem 0;
@@ -73,7 +80,7 @@ header {
     font-size: 4.75vh;
     text-shadow: .2vh .35vh .2vh #000000;
     font-weight: bold;
-    color: gainsboro;
+    color: #FFF;
     text-transform: uppercase;
     display: flex;
     justify-content: center;
@@ -105,7 +112,7 @@ header {
   margin-left: 2px;
   border-radius: 4px;
   user-select: none;
-  box-shadow: inset 0px -5px 0px #a33;
+  box-shadow: inset 0px -5px 0px transparent;
 }
 
 .spacer-half {

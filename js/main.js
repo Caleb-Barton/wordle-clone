@@ -15,6 +15,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const keys = document.querySelectorAll(".keyboard-row button");
     let keyRange = [[96,123],[96,123],[96,123],[96,123],[96,123]]
 
+    // Colors
+    const styles = getComputedStyle(keys[0]);
+    const cb_yellow = styles.getPropertyValue('--cb_yellow');
+    const cb_green = styles.getPropertyValue('--cb_green');
+    const cb_blue = styles.getPropertyValue('--cb_blue');
+
     function getAllWords() {
       fetch("data/all_words.txt")
             .then(response => response.text())
@@ -81,16 +87,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function getTileColor(letter, index) {
     let distance = letter.charCodeAt(0) - word.charCodeAt(index)
+    updateKeyboardColors();
 
     if (distance > 0) {
       updateKeyRangeLow(letter, index);
-      return "#2E5984";
+      return cb_blue;
     } else if (distance == 0) {
       updateKeyRangeFound(letter, index);
-      return "#40713A";
+      return cb_green;
     } else {
       updateKeyRangeHigh(letter, index);
-      return "#B7912A";
+      return cb_yellow;
     }
     
   }
@@ -103,11 +110,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (dataKey.length == 1) // Let's not do anything to Del or Enter
       {
         if (keyRange[charNum][0] >= dataKey.charCodeAt(0)) {
-          key.style.backgroundColor = "#B7912A";
+          key.style.boxShadow = "inset 0px -10px 0px #B7912A";
         } else  if (keyRange[charNum][1] <= dataKey.charCodeAt(0)) {
-          key.style.backgroundColor = "#2E5984";
+          key.style.boxShadow = "inset 0px -10px 0px #2E5984";
         } else {
-          key.style.backgroundColor = '#666';
+          key.style.boxShadow = "inset 0px -10px 0px #666";
         }
       }
     });
@@ -163,6 +170,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       guessedWords.push([]);
+
+      console.log(keyRange);
+      updateKeyboardColors();
 
     } else {
       window.alert("Word is not recognised!");
