@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const letterId = firstLetterId + index;
           const letterEl = document.getElementById(letterId);
           letterEl.classList.add("animate__flipInX");
-          letterEl.style = `background-color:#${tileColor};border-color:#${tileColor};background-image: url(/images/Tile_${tileColor}.svg)`;
+          letterEl.style = `background-color:#${tileColor};border-color:#${tileColor};`;
         }, interval * index);
       });
 
