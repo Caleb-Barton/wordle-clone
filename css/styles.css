@@ -44,7 +44,7 @@ body {
 }
 
 header {
-  border-bottom: 1px solid rgb(58, 58, 60);
+  border-bottom: 1px solid var(--cb_gray);
 }
 
 .title {
@@ -74,11 +74,11 @@ header {
 }
 
 .square {
-    border: 2px solid rgb(58, 58, 60);
+    border: 2px solid var(--cb_gray);
     width: 7.5vh;
     height: 7.5vh;
     font-size: 4.75vh;
-    text-shadow: .2vh .35vh .2vh #000000;
+    text-shadow: .2vh .35vh .2vh #000;
     font-weight: bold;
     color: #FFF;
     text-transform: uppercase;
@@ -104,8 +104,8 @@ header {
   padding: 0;
   height: 7.5vh;
   cursor: pointer;
-  background-color: rgb(90, 90, 90);
-  color: rgb(215, 218, 220);
+  background-color: var(--cb_gray);
+  color: #FFF;
   flex-grow: 1;
   text-transform: uppercase;
   margin-right: 2px;

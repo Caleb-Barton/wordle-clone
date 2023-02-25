@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let gameOver = false;
 
     const keys = document.querySelectorAll(".keyboard-row button");
-    let keyRange = [[96,123],[96,123],[96,123],[96,123],[96,123]]
+    let keyRange = [[96,123,0],[96,123,0],[96,123,0],[96,123,0],[96,123,0]] // min, max, found place
 
     // Colors
     const styles = getComputedStyle(keys[0]);
@@ -111,10 +111,16 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         if (keyRange[charNum][0] >= dataKey.charCodeAt(0)) {
           key.style.boxShadow = "inset 0px -10px 0px #B7912A";
+          key.style.background = "#333";
         } else  if (keyRange[charNum][1] <= dataKey.charCodeAt(0)) {
           key.style.boxShadow = "inset 0px -10px 0px #2E5984";
-        } else {
-          key.style.boxShadow = "inset 0px -10px 0px #666";
+          key.style.background = "#333";
+        } else if (keyRange[charNum][3] == dataKey.charCodeAt(0)) {
+          key.style.boxShadow = "inset 0px -10px 0px #40713A";
+          key.style.background = "#555";
+        } else{
+          key.style.boxShadow = "inset 0px -10px 0px #555";
+          key.style.background = "#555";
         }
       }
     });
@@ -123,6 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateKeyRangeFound(letter, index){
     keyRange[index][0] = letter.charCodeAt(0) - 1;
     keyRange[index][1] = letter.charCodeAt(0) + 1;
+    keyRange[index][3] = letter.charCodeAt(0);
   }
 
   function updateKeyRangeHigh(letter, index){
