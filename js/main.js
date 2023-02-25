@@ -18,10 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
     window.alert("Here's how to play. \n \n This is a word guessing game. Each time you guess a word, your letters change into one of three colors. \n    - Yellow means that your color is too high in the alphabet. \n    - Blue means that your color is too low in the alphabet. \n    - Green means that you got it just right! \n \n The keyboard is in alphabetical order to help you be more conscious of which letters come before which. \n \n Let me know what you think!")
 
     // Colors
-    // yellow: #B7912A;
-    // green: #40713A;
-    // blue: #2E5984;
-    // gray: #555;
+    const yellow = "C39A2C";
+    const green = "487E41";
+    const blue = "336290";
+    const gray = "555";
     
 
     function getAllWords() {
@@ -96,13 +96,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (distance > 0) {
       updateKeyRangeLow(letter, index);
-      return "#2E5984";
+      return blue;
     } else if (distance == 0) {
       updateKeyRangeFound(letter, index);
-      return "#40713A";
+      return green;
     } else {
       updateKeyRangeHigh(letter, index);
-      return "#B7912A";
+      return yellow;
     }
     
   }
@@ -115,13 +115,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (dataKey.length == 1) // Let's not do anything to Del or Enter
       {
         if (keyRange[charNum][0] >= dataKey.charCodeAt(0)) {
-          key.style.boxShadow = "inset 0px -10px 0px #B7912A";
+          key.style.boxShadow = `inset 0px -10px 0px #${yellow}`;
           key.style.background = "#333";
         } else  if (keyRange[charNum][1] <= dataKey.charCodeAt(0)) {
-          key.style.boxShadow = "inset 0px -10px 0px #2E5984";
+          key.style.boxShadow = `inset 0px -10px 0px #${blue}`;
           key.style.background = "#333";
         } else if (keyRange[charNum][3] == dataKey.charCodeAt(0)) {
-          key.style.boxShadow = "inset 0px -10px 0px #40713A";
+          key.style.boxShadow = `inset 0px -10px 0px #${green}`;
           key.style.background = "#555";
         } else{
           key.style.boxShadow = "inset 0px -10px 0px #555";
@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const letterId = firstLetterId + index;
           const letterEl = document.getElementById(letterId);
           letterEl.classList.add("animate__flipInX");
-          letterEl.style = `background-color:${tileColor};border-color:${tileColor}`;
+          letterEl.style = `background-color:#${tileColor};border-color:#${tileColor};background-image: url(/images/Tile_${tileColor}.svg)`;
         }, interval * index);
       });
 
