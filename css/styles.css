@@ -78,14 +78,13 @@ header {
     width: 7.5vh;
     height: 7.5vh;
     font-size: 4.75vh;
-    text-shadow: .2vh .35vh .2vh #000;
     font-weight: bold;
     color: #FFF;
     text-transform: uppercase;
     display: flex;
     justify-content: center;
     align-items: center;
-    /*border-radius: .5vh;*/
+    border-radius: 4px;
 }
 
 .keyboard-row {

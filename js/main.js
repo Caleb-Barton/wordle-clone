@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let word;
     let guessedWordCount = 0;
-    let gameWon = false;
+    let gameWon;
     let gameOver = false;
 
     const keys = document.querySelectorAll(".keyboard-row button");
@@ -18,10 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
     window.alert("Here's how to play. \n \n This is a word guessing game. Each time you guess a word, your letters change into one of three colors. \n    - Yellow means that your color is too high in the alphabet. \n    - Blue means that your color is too low in the alphabet. \n    - Green means that you got it just right! \n \n The keyboard is in alphabetical order to help you be more conscious of which letters come before which. \n \n Let me know what you think!")
 
     // Colors
-    const styles = getComputedStyle(keys[0]);
-    const cb_yellow = styles.getPropertyValue('--cb_yellow');
-    const cb_green = styles.getPropertyValue('--cb_green');
-    const cb_blue = styles.getPropertyValue('--cb_blue');
+    // yellow: #B7912A;
+    // green: #40713A;
+    // blue: #2E5984;
+    // gray: #555;
+    
 
     function getAllWords() {
       fetch("data/all_words.txt")
@@ -93,13 +94,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (distance > 0) {
       updateKeyRangeLow(letter, index);
-      return cb_blue;
+      return "#2E5984";
     } else if (distance == 0) {
       updateKeyRangeFound(letter, index);
-      return cb_green;
+      return "#40713A";
     } else {
       updateKeyRangeHigh(letter, index);
-      return cb_yellow;
+      return "#B7912A";
     }
     
   }
@@ -179,8 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       guessedWords.push([]);
-
-      console.log(keyRange);
+      
       updateKeyboardColors();
 
     } else {
