@@ -52,9 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function getNumberFromDate(length) { // Gifted to me by ChatGPT
-      const date = new Date();
-      const dateString = date.toISOString().slice(0, 10); // get the date string in "YYYY-MM-DD" format
-      const hash = getHash(dateString); // get a hash value for the date string
+      const now = new Date();
+      const options = { year: 'numeric', month: 'long', day: 'numeric'};
+      const dateTimeString = now.toLocaleString(navigator.language, options);
+      const hash = getHash(dateTimeString); // get a hash value for the date string
+      
 
       const number = hash % length; // map the hash value to a number between 1 and 300
       return number;
