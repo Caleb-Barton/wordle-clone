@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const keys = document.querySelectorAll(".keyboard-row button");
     let keyRange = [[96,123,0],[96,123,0],[96,123,0],[96,123,0],[96,123,0]] // min, max, found place
 
-    window.alert("Here's how to play. \n \n This is a word guessing game. Each time you guess a word, your letters change into one of three colors. \n    - Yellow means that your color is to high in the alphabet. \n    - Blue means that your color is too low in the alphabet. \n    - Green means that you got it just right! \n \n The keyboard is in alphabetical order to help you be more conscious of which letters come before which. \n \n Let me know what you think!")
+    window.alert("Here's how to play. \n \n This is a word guessing game. Each time you guess a word, your letters change into one of three colors. \n    - Yellow means that your color is too high in the alphabet. \n    - Blue means that your color is too low in the alphabet. \n    - Green means that you got it just right! \n \n The keyboard is in alphabetical order to help you be more conscious of which letters come before which. \n \n Let me know what you think!")
 
     // Colors
     const styles = getComputedStyle(keys[0]);
