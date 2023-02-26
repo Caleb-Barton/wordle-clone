@@ -107,6 +107,23 @@ document.addEventListener("DOMContentLoaded", () => {
     
   }
 
+  function getTileClass(letter, index) {
+    let distance = letter.charCodeAt(0) - word.charCodeAt(index)
+    updateKeyboardColors();
+
+    if (distance > 0) {
+      updateKeyRangeLow(letter, index);
+      return "low-letter";
+    } else if (distance == 0) {
+      updateKeyRangeFound(letter, index);
+      return "correct-letter";
+    } else {
+      updateKeyRangeHigh(letter, index);
+      return "high-letter";
+    }
+    
+  }
+
   function updateKeyboardColors() {
     const charNum = getCurrentWordArr().length;
     if (charNum >= 5) {return}
@@ -165,12 +182,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const interval = 150;
       currentWordArr.forEach((letter, index) => {
         setTimeout(() => {
-          const tileColor = getTileColor(letter, index);
+          const tileClass = getTileClass(letter, index);
 
           const letterId = firstLetterId + index;
           const letterEl = document.getElementById(letterId);
           letterEl.classList.add("animate__flipInX");
-          letterEl.style = `background-color:#${tileColor};border-color:#${tileColor};`;
+          letterEl.classList.add(tileClass);
         }, interval * index);
       });
 

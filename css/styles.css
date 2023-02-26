@@ -114,18 +114,21 @@ header {
 }
 
 .square.high-letter {
-  background-color: rgb(58, 58, 60);
-  border-color: rgb(58, 58, 60);
+  background-color: var(--cb_yellow);
+  border-color: var(--cb_yellow);
+  text-shadow: 0.4vh 0.4vh 2px #926722;
 }
 
 .square.correct-letter {
-  background-color: rgb(181, 159, 59);
-  border-color: rgb(181, 159, 59);
+  background-color: var(--cb_green);
+  border-color: var(--cb_green);
+  text-shadow: 0.4vh 0.4vh 2px #2B5038;
 }
 
 .square.low-letter {
-  background-color: rgb(83, 141, 78);
-  border-color: rgb(83, 141, 78);
+  background-color: var(--cb_blue);
+  border-color: var(--cb_blue);
+  text-shadow: 0.4vh 0.4vh 2px #263768;
 } 
 
 .keyboard-row {
