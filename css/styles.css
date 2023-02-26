@@ -77,6 +77,26 @@ header {
   box-sizing: border-box;
 }
 
+#help, #stats {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+#stats {
+  background-image: url(../images/Icon_Stats.svg);
+}
+
+#help {
+  background-image: url(../images/Icon_Help.svg);
+}
+
 .square {
     border: 2px solid var(--cb_gray);
     width: 7.5vh;
@@ -92,6 +112,21 @@ header {
 
     Background-size: cover;
 }
+
+.square.high-letter {
+  background-color: rgb(58, 58, 60);
+  border-color: rgb(58, 58, 60);
+}
+
+.square.correct-letter {
+  background-color: rgb(181, 159, 59);
+  border-color: rgb(181, 159, 59);
+}
+
+.square.low-letter {
+  background-color: rgb(83, 141, 78);
+  border-color: rgb(83, 141, 78);
+} 
 
 .keyboard-row {
   display: flex;
