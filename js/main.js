@@ -117,15 +117,19 @@ document.addEventListener("DOMContentLoaded", () => {
         if (keyRange[charNum][0] >= dataKey.charCodeAt(0)) {
           key.style.boxShadow = `inset 0px -10px 0px #${yellow}`;
           key.style.background = "#333";
+          key.style.color = `#777`;
         } else  if (keyRange[charNum][1] <= dataKey.charCodeAt(0)) {
           key.style.boxShadow = `inset 0px -10px 0px #${blue}`;
           key.style.background = "#333";
+          key.style.color = `#777`;
         } else if (keyRange[charNum][3] == dataKey.charCodeAt(0)) {
           key.style.boxShadow = `inset 0px -10px 0px #${green}`;
-          key.style.background = "#555";
+          key.style.background = `#${gray}`;
+          key.style.color = `#FFF`;
         } else{
-          key.style.boxShadow = "inset 0px -10px 0px #555";
-          key.style.background = "#555";
+          key.style.boxShadow = `inset 0px -10px 0px #${gray}`;
+          key.style.background = `#${gray}`;
+          key.style.color = `#FFF`;
         }
       }
     });
