@@ -79,22 +79,28 @@ header {
 
 #help, #stats {
   cursor: pointer;
-  border: 0;
-  padding: 0;
-  height: 2rem;
-  width: 2rem;
+  border: 0px;
+  padding: .5rem;
+  height: 1.75rem;
+  width: 1.75rem;
   cursor: pointer;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
 
+#help:hover, #stats:hover {
+  background-color: #222;
+}
+
 #stats {
   background-image: url(../images/Icon_Stats.svg);
+
 }
 
 #help {
   background-image: url(../images/Icon_Help.svg);
+  border-radius: 5rem;
 }
 
 .square {
