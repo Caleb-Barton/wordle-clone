@@ -89,10 +89,6 @@ header {
   background-size: contain;
 }
 
-#help:hover, #stats:hover {
-  background-color: #222;
-}
-
 #stats {
   background-image: url(../images/Icon_Stats.svg);
 

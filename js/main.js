@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           const letterId = firstLetterId + index;
           const letterEl = document.getElementById(letterId);
-          letterEl.classList.add("animate__flipInX");
+          letterEl.classList.add("animate__jackInTheBox");
           letterEl.classList.add(tileClass);
         }, interval * index);
       });
