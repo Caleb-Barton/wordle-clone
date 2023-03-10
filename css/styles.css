@@ -1,8 +1,8 @@
 :root {
-  --cb_yellow: #B7912A;
-  --cb_green: #40713A;
-  --cb_blue: #2E5984;
-  --cb_gray: #555;
+  --cb_yellow: #D39F2B;
+  --cb_green: #599A50;
+  --cb_blue: #3E77B0;
+  --cb_gray: #777;
 }
 
 * {
@@ -118,19 +118,19 @@ header {
 .square.high-letter {
   background-color: var(--cb_yellow);
   border-color: var(--cb_yellow);
-  text-shadow: 0.4vh 0.4vh 2px #926722;
+  text-shadow: 0.4vh 0.4vh 0.4vh #744812;
 }
 
 .square.correct-letter {
   background-color: var(--cb_green);
   border-color: var(--cb_green);
-  text-shadow: 0.4vh 0.4vh 2px #2B5038;
+  text-shadow: 0.4vh 0.4vh 0.4vh #2B5038;
 }
 
 .square.low-letter {
   background-color: var(--cb_blue);
   border-color: var(--cb_blue);
-  text-shadow: 0.4vh 0.4vh 2px #263768;
+  text-shadow: 0.4vh 0.4vh 0.4vh #263768;
 } 
 
 .keyboard-row {
@@ -160,6 +160,22 @@ header {
   text-shadow: 0.25vh 0.25vh #0005;
   box-shadow: inset 0px -5px 0px transparent;
 }
+
+.keyboard-row button.high-letter {
+  background-color: #333;
+  color: var(--cb_gray);
+  box-shadow: inset 0px -1vh 0px var(--cb_yellow);
+}
+
+.keyboard-row button.correct-letter {
+  background-color: #333;
+}
+
+.keyboard-row button.low-letter {
+  background-color: #333;
+  color: var(--cb_gray);
+  box-shadow: inset 0px -1vh 0px var(--cb_blue);
+} 
 
 .spacer-half {
   flex-grow: 0.5;

@@ -18,10 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
     window.alert("Here's how to play. \n \n This is a word guessing game. Each time you guess a word, your letters change into one of three colors. \n    - Yellow means that that letter is too early in the alphabet. \n    - Blue means that that letter is too late in the alphabet. \n    - Green means that you got it just right! \n \n The keyboard is in alphabetical order to help you be more conscious of which letters come before which. \n \n Let me know what you think!")
 
     // Colors
-    const yellow = "C39A2C";
-    const green = "487E41";
-    const blue = "336290";
-    const gray = "555";
+    const yellow = "D39F2B";
+    const green = "599A50";
+    const blue = "3E77B0";
+    const gray = "777";
     
 
     function getAllWords() {
