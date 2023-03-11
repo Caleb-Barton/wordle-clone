@@ -83,6 +83,8 @@ header {
   padding: .5rem;
   height: 1.75rem;
   width: 1.75rem;
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
   cursor: pointer;
   background-repeat: no-repeat;
   background-position: center;
@@ -91,12 +93,10 @@ header {
 
 #stats {
   background-image: url(../images/Icon_Stats.svg);
-
 }
 
 #help {
   background-image: url(../images/Icon_Help.svg);
-  border-radius: 5rem;
 }
 
 .square {
