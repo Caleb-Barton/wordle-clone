@@ -74,7 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
           window.localStorage.setItem("guessedWordCount", JSON.stringify(guessedWordCount));
           window.localStorage.setItem("availableSpace", JSON.stringify(availableSpace));
           window.localStorage.setItem("keyRange", JSON.stringify(keyRange));
-          window.localStorage.setItem("histList", JSON.stringify([0,0,0,0,0,0,0]));
+          let hitList = [0,0,0,0,0,0,0];
+          window.localStorage.setItem("histList", JSON.stringify(hitList));
           window.localStorage.setItem("streakCount", JSON.stringify(0));
           window.localStorage.setItem("lastWinDate", JSON.stringify(null));
           window.localStorage.setItem("gameOver", JSON.stringify(false));
@@ -112,6 +113,23 @@ document.addEventListener("DOMContentLoaded", () => {
     window.localStorage.setItem("gameOver", JSON.stringify(gameOver));
     window.localStorage.setItem("availableSpace", JSON.stringify(availableSpace));
   }
+
+  function updateWinLocalMemory (num) {
+    streakCount = JSON.parse(window.localStorage.getItem("streakCount"));
+    window.localStorage.setItem("streakCount", JSON.stringify(streakCount + 1));
+    histList = JSON.parse(window.localStorage.getItem("histList"));
+    histList[num] += 1;
+    window.localStorage.setItem("histList", JSON.stringify(histList));
+  }
+
+  function updateLoseLocalMemory () {
+    window.localStorage.setItem("streakCount", JSON.stringify(0));
+    histList = JSON.parse(window.localStorage.getItem("histList"));
+    histList[6] += 1;
+    window.localStorage.setItem("histList", JSON.stringify(histList));
+  }
+
+
   
   function isNextDay(dateString1, dateString2) { // Calculates if date2 comes directly after date1
       const date1 = new Date(dateString1);
@@ -285,16 +303,13 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(displayCongrats, 1350);
         gameWon = true;
         gameOver = true;
-
-        streakCount = JSON.parse(window.localStorage.getItem("streakCount"));
-        window.localStorage.setItem("streakCount", JSON.stringify(streakCount + 1));
         
+        updateWinLocalMemory(guessedWords.length);
 
       } else if (guessedWords.length === 6) {
         setTimeout(displaySorry, 1350);
         gameOver = true;
-
-        window.localStorage.setItem("streakCount", JSON.stringify(0));
+        updateLoseLocalMemory();
       }
 
       guessedWords.push([]);
@@ -423,23 +438,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateStatsModal() {
-    let list = [0,1,0,0,0,0,0];
+    let list = JSON.parse(window.localStorage.getItem("histList"));
     let sum = 0;
 
     for (let i = 0; i < list.length; i++) {
       sum += list[i];
     }
-
     let newList = [];
-
     for (let i = 0; i < list.length; i++) {
-      newList[i] = Math.ceil((list[i] / sum) * 18);
+      newList[i] = Math.ceil((list[i] / sum) * 14);
     }
 
     for (let i = 0; i < 6; i++){
       document.getElementById(`win-count${i+1}`).textContent =`${"█".repeat(newList[i])} (${list[i]})`;
     }
     document.getElementById(`loss-count`).textContent =`${"█".repeat(newList[6])} (${list[6]})`;
+
+    const streakCount = JSON.parse(window.localStorage.getItem("streakCount"));
+    document.getElementById(`current-streak`).textContent = `${streakCount}`;
 
   }
 
