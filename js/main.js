@@ -62,8 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function initLocalStorage() { // Checks the localStorage and takes actions needed (create localfiles, load game, etc)
-      const lastPlayDate =
-          window.localStorage.getItem("lastPlayDate");
+      const lastPlayDate = window.localStorage.getItem("lastPlayDate");
       if (!lastPlayDate) {
           // No local memory
           // add open instructions
@@ -97,11 +96,17 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
           // New day, refresh old data
           console.log("It's a new day!")
-          if (!isNextDay(lastPlayDate, today)) { // If isn't the next day, refresh streak to zero
+          const lastWinDate = window.localStorage.getItem("lastWinDate");
+          if (!isNextDay(lastWinDate, today)) { // If isn't the next day, refresh streak to zero
               window.localStorage.setItem("streakCount", JSON.stringify(0));
           }
-          window.localStorage.setItem("guesedWords", JSON.stringify(guessedWords));
+          window.localStorage.setItem("availableSpace", JSON.stringify(availableSpace));
+          window.localStorage.setItem("gameOver", JSON.stringify(gameOver));
+          window.localStorage.setItem("guessedWords", JSON.stringify(guessedWords));
+          window.localStorage.setItem("guessedWordCount", JSON.stringify(guessedWordCount));
           window.localStorage.setItem("lastPlayDate", today);
+          window.localStorage.setItem("keyRange", JSON.stringify(keyRange));
+          getNewWord();
       }
   }
 
@@ -114,12 +119,13 @@ document.addEventListener("DOMContentLoaded", () => {
     window.localStorage.setItem("availableSpace", JSON.stringify(availableSpace));
   }
 
-  function updateWinLocalMemory (num) {
+  function updateWinLocalMemory(num) {
     streakCount = JSON.parse(window.localStorage.getItem("streakCount"));
     window.localStorage.setItem("streakCount", JSON.stringify(streakCount + 1));
     histList = JSON.parse(window.localStorage.getItem("histList"));
     histList[num] += 1;
     window.localStorage.setItem("histList", JSON.stringify(histList));
+    window.localStorage.setItem("lastWinDate", today);
   }
 
   function updateLoseLocalMemory () {
@@ -135,7 +141,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const date1 = new Date(dateString1);
       const date2 = new Date(dateString2);
       const differenceInTime = date2.getTime() - date1.getTime();
-      const differenceInDays = differenceInTime / (1000 * 3600 * 24.1)
+      const differenceInDays = differenceInTime / (1000 * 3600 * 24.1);
+      console.log(differenceInDays);
       return (differenceInDays <= 1)
   }
 
@@ -304,7 +311,7 @@ document.addEventListener("DOMContentLoaded", () => {
         gameWon = true;
         gameOver = true;
         
-        updateWinLocalMemory(guessedWords.length);
+        updateWinLocalMemory(guessedWords.length - 1);
 
       } else if (guessedWords.length === 6) {
         setTimeout(displaySorry, 1350);
@@ -449,10 +456,15 @@ document.addEventListener("DOMContentLoaded", () => {
       newList[i] = Math.ceil((list[i] / sum) * 14);
     }
 
+    let totalWins = 0;
     for (let i = 0; i < 6; i++){
+      totalWins += list[i]
       document.getElementById(`win-count${i+1}`).textContent =`${"█".repeat(newList[i])} (${list[i]})`;
     }
     document.getElementById(`loss-count`).textContent =`${"█".repeat(newList[6])} (${list[6]})`;
+
+    document.getElementById(`total-wins`).textContent =`${totalWins}`;
+    document.getElementById(`win-pct`).textContent = `${(100 * totalWins / sum).toFixed(0)}%`;
 
     const streakCount = JSON.parse(window.localStorage.getItem("streakCount"));
     document.getElementById(`current-streak`).textContent = `${streakCount}`;

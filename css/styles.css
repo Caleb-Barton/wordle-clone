@@ -8,7 +8,6 @@
 * {
     margin: 0;
     padding: 0;
-    background-color: black;
 }
 
 html,
@@ -16,6 +15,7 @@ body {
   height: 100%;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: black;
 }
 
 #container {
@@ -33,6 +33,24 @@ body {
     margin-right: auto;
     padding-top: 0.75vh;
     padding-bottom: 0.75vh;
+}
+
+#gif {
+  width: 88%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0.75vh;
+  padding-bottom: 0.75vh;
+}
+
+#example {
+  width: 65%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0.75vh;
+  padding-bottom: 0.75vh;
 }
 
 #game {
@@ -58,6 +76,11 @@ header {
   text-align: center;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  font-weight: bold;
 }
 
 #board-container {
@@ -89,6 +112,7 @@ header {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  background-color: transparent;
 }
 
 #stats {
@@ -214,7 +238,7 @@ header {
 }
 .close:hover,
 .close:focus {
-  color: black;
+  color: var(--cb_green);
   text-decoration: none;
   cursor: pointer;
 }

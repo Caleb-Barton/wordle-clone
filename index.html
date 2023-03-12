@@ -26,7 +26,6 @@
           </header>
 
         <div id="board-container">
-          <h2 id="final-score"></h2>
           <div id="board"></div>
         </div>
         <div id="keyboard-container">
@@ -72,18 +71,32 @@
               <!-- Modal content -->
               <div class="modal-content">
                 <span class="close" id="close-help">&times;</span>
-                <p>Guess the WORDLE in 6 tries.</p>
-                <p>
-                  Each guess must be a valid 5 letter word. Hit the enter button to
-                  submit.
-                </p>
-                <p>
-                  After each guess, the color of the tiles will change to show how
-                  close your guess was to the word.
-                </p>
-                <img src="images/favicon_1.0.png" id="examples" />
+                <h2>HOW TO PLAY</h2>
+                <br>
                 <hr />
-                <p>A new WORDLE will be available each day!</p>
+                <br>
+                <p>Each day, there is a new word 5 letter word to guess, and you get 6 tries to guess it. Let's say this word is <b>YOUTH</b>.</p>
+                <br>
+                <p>
+                  Each guess must be a valid 5 letter word. Type your guess and hit the enter button to submit your guess. Let's say you guess the word CRUSH:
+                </p>
+                <img src="images/word_example_unsubmitted.png" id="example">
+                <p>
+                  After submitting, each letter tile will reveal a color. If the letter is yellow, that means that the letter you selected 
+                  comes <i> before </i> the correct letter. If it is blue, that means that the letter you selected in that spot comes <i>after</i> the 
+                  correct letter. Green indicates that you have selected the correct letter for that spot. 
+                </p>
+                <img src="images/word_example_submitted.png" id="example">
+
+                <p>
+                  In this example, the first guessed letter, C, is yellow because C comes before Y in the alphabet. The second guessed letter, R, is 
+                  blue because R comes after O. The third letter, U, is green, because it is the correct letter.
+                </p>
+
+                <img src="images/typing.gif" id="gif">
+
+                <p>After your first guess, the alphabetic keyboard will help you remember the order of the alphabet, and what you have already ruled
+                   out with your previous guesses.</p>
               </div>
             </div>
             <div id="stats-modal" class="modal">
@@ -91,8 +104,10 @@
               <div class="modal-content">
                 <span class="close" id="close-stats">&times;</span>
                 <h2>STATISTICS</h2>
-                <h3><strong>Total</strong>: <span id="total-played"></span></h3>
-                <h3><strong>Wins</strong>: <span id="total-wins"></span></h3>
+                <br>
+                <h3><strong>Current Streak</strong>: <span id="current-streak"></span></h3>
+                <br>
+                <h3><strong>Total Wins</strong>: <span id="total-wins"></span></h3>
                 <h4><strong>&nbsp; 1</strong>: <span id="win-count1"></span></h4>
                 <h4><strong>&nbsp; 2</strong>: <span id="win-count2"></span></h4>
                 <h4><strong>&nbsp; 3</strong>: <span id="win-count3"></span></h4>
@@ -100,10 +115,9 @@
                 <h4><strong>&nbsp; 5</strong>: <span id="win-count5"></span></h4>
                 <h4><strong>&nbsp; 6</strong>: <span id="win-count6"></span></h4>
                 <h4><strong>&nbsp; X</strong>: <span id="loss-count"></span></h4>
-                <h3><strong>Win %</strong>: <span id="win-pct"></span></h3>
-                <h3>
-                  <strong>Current Streak</strong>: <span id="current-streak"></span>
-                </h3>
+                <br>
+                <h3><strong>Win Rate</strong>: <span id="win-pct"></span></h3>
+
               </div>
             </div>
 
