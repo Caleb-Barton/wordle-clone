@@ -27,15 +27,21 @@ body {
 }
 
 #yellow {
-  color: var(--cb_yellow)
+  color: var(--cb_yellow);
 }
 
 #green {
-  color: var(--cb_green)
+  color: var(--cb_green);
 }
 
 #blue {
-  color: var(--cb_blue)
+  color: var(--cb_blue);
+}
+
+#credit {
+  color: var(--cb_gray);
+  padding-top: 7px;
+  text-align: center;
 }
 
 #logo {
