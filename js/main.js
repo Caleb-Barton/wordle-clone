@@ -307,18 +307,17 @@ document.addEventListener("DOMContentLoaded", () => {
       guessedWordCount += 1;
 
       if (currentWord === word) {
-        setTimeout(displayCongrats, 1350);
         gameWon = true;
         gameOver = true;
         
         updateWinLocalMemory(guessedWords.length - 1);
-
+        setTimeout(showStats, 1350);
       } else if (guessedWords.length === 6) {
-        setTimeout(displaySorry, 1350);
+
         gameOver = true;
         updateLoseLocalMemory();
+        setTimeout(displaySorry, 1350);
       }
-
       guessedWords.push([]);
       
       updateKeyboardColors();
@@ -329,12 +328,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function displayCongrats() {
-    window.alert("Congratulations!")
+  function showStats() {
+    updateStatsModal();
+    const modal = document.getElementById("stats-modal");
+    modal.style.display = "block";
   }
 
   function displaySorry() {
     window.alert(`Sorry, the word was ${word}!`)
+    showStats();
   }
 
   function binarySearch(arr, target) { // Gifted to me by ChatGPT
@@ -464,7 +466,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById(`loss-count`).textContent =`${"█".repeat(newList[6])} (${list[6]})`;
 
     document.getElementById(`total-wins`).textContent =`${totalWins}`;
-    document.getElementById(`win-pct`).textContent = `${(100 * totalWins / sum).toFixed(0)}%`;
+    let winRate = (100 * totalWins / sum).toFixed(0);
+    if (isNaN(winRate)) {winRate = 0;}
+    document.getElementById(`win-pct`).textContent = `${winRate}%`;
 
     const streakCount = JSON.parse(window.localStorage.getItem("streakCount"));
     document.getElementById(`current-streak`).textContent = `${streakCount}`;

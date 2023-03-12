@@ -72,20 +72,22 @@
               <div class="modal-content">
                 <span class="close" id="close-help">&times;</span>
                 <h2>HOW TO PLAY</h2>
-                <br>
                 <hr />
                 <br>
                 <p>Each day, there is a new word 5 letter word to guess, and you get 6 tries to guess it. Let's say this word is <b>YOUTH</b>.</p>
                 <br>
                 <p>
-                  Each guess must be a valid 5 letter word. Type your guess and hit the enter button to submit your guess. Let's say you guess the word CRUSH:
+                  To guess, type a 5 letter word and hit the enter button to submit. Let's say you guess the word CRUSH:
                 </p>
                 <img src="images/word_example_unsubmitted.png" id="example">
                 <p>
-                  After submitting, each letter tile will reveal a color. If the letter is yellow, that means that the letter you selected 
-                  comes <i> before </i> the correct letter. If it is blue, that means that the letter you selected in that spot comes <i>after</i> the 
-                  correct letter. Green indicates that you have selected the correct letter for that spot. 
+                  After submitting, each letter tile will reveal a color.
                 </p>
+                <ul style="list-style: disc; margin-left: 2em;">
+                  <li>Yellow means that the letter you selected in that spot comes before the correct letter in that spot.</li>
+                  <li>Blue means that the letter you selected comes after the correct letter.</li>
+                  <li>Green indicates that you have selected the correct letter for that spot.</li>
+                </ul>
                 <img src="images/word_example_submitted.png" id="example">
 
                 <p>
@@ -95,8 +97,10 @@
 
                 <img src="images/typing.gif" id="gif">
 
-                <p>After your first guess, the alphabetic keyboard will help you remember the order of the alphabet, and what you have already ruled
-                   out with your previous guesses.</p>
+                <p>
+                  After your first guess, the alphabetic keyboard will help you visualize the order of the alphabet, and what 
+                  you have already ruled out with your previous guesses.
+                </p>
               </div>
             </div>
             <div id="stats-modal" class="modal">
@@ -104,6 +108,7 @@
               <div class="modal-content">
                 <span class="close" id="close-stats">&times;</span>
                 <h2>STATISTICS</h2>
+                <hr />
                 <br>
                 <h3><strong>Current Streak</strong>: <span id="current-streak"></span></h3>
                 <br>
